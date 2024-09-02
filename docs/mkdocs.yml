@@ -1,0 +1,11 @@
+site_name: Castelo Assombrado
+site_url: https://github.com/yuritaba/pygame_opendev
+theme:
+  name: material
+nav:
+  - Home: index.md
+  - Developer Guide:
+      - Build Instructions: developer/build_instruction.md
+      - Code Organization: developer/code_organization.md
+      - Technologies Used: developer/technologies_used.md
+repo_url: https://github.com/yuritaba/pygame_opendev
