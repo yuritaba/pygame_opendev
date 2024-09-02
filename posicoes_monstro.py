@@ -1,9 +1,9 @@
-"""lista_mov=[[560,40]]
+"""
+Módulo que define os movimentos dos monstros no jogo Castelo Assombrado.
 
-for i in range(40):
-    lista_mov.append([lista_mov[i][0]+1,lista_mov[i][1]+0])
-
-print(lista_mov)"""
+Contém funções para adicionar movimentos em listas específicas que representam
+os caminhos que cada monstro seguirá no jogo.
+"""
 
 lista_mov=[]
 lista_mov2=[]
@@ -11,28 +11,30 @@ lista_mov3=[]
 lista_mov4=[]
 lista_mov5=[]
 
-def monstro_esquerda(l):
-    for i in range(40):
-        l.append([-1,0])
-    return l
+def monstro_esquerda(lista):
+    """Adiciona movimentos para a esquerda na lista."""
+    for _ in range(40):
+        lista.append([-1, 0])
+    return lista
 
+def monstro_baixo(lista):
+    """Adiciona movimentos para baixo na lista."""
+    for _ in range(40):
+        lista.append([0, 1])
+    return lista
 
-def monstro_baixo(l):
-    for i in range(40):
-        l.append([0,1])
-    return l
+def monstro_cima(lista):
+    """Adiciona movimentos para cima na lista."""
+    for _ in range(40):
+        lista.append([0, -1])
+    return lista
 
+def monstro_direita(lista):
+    """Adiciona movimentos para a direita na lista."""
+    for _ in range(40):
+        lista.append([1, 0])
+    return lista
 
-def monstro_cima(l):
-    for i in range(40):
-        l.append([0,-1])
-    return l
-
-
-def monstro_direita(l):
-    for i in range(40):
-        l.append([1,0])
-    return l
 
 
 for i in range(2):

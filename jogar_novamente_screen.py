@@ -1,12 +1,8 @@
-import pygame
-from assets import BOTAO_JOGARN, VITORIA_BG, load_assets
-from sprites import Personagem, Button
-from sympy import Q
-from mapa import matriz2
 from os import path
+import pygame
+from assets import VITORIA_BG, load_assets, BOTAO_JOGARN2
+from sprites import Button
 from config import HEIGHT,WIDTH,IMG_DIR, FPS, BLACK, QUIT, GAME, SND_DIR
-from assets import PARADO, VITORIA_BG, ANIMACAO_DIREITA, ANIMACAO_ESQUERDA, BOTAO_JOGARN2
-from scene import make
 
 def jogar_novamente_screen(window):
     clock = pygame.time.Clock()
@@ -34,7 +30,7 @@ def jogar_novamente_screen(window):
                 state = QUIT
                 running = False
 
-            if botao.press() == True:
+            if botao.press():
                 state = GAME
                 running = False
 

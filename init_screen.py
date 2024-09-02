@@ -1,9 +1,7 @@
 # Importa e inicia pacotes
-from matplotlib.pyplot import draw
-import pygame
-import random
 from os import path
-from config import BLACK, BOTAO_HEIGHT, BOTAO_WIDTH, FPS, IMG_DIR, WIDTH, HEIGHT, INIT, GAME, QUIT
+import pygame
+from config import BLACK, WIDTH, HEIGHT, GAME, QUIT
 from assets import BACKGROUND, BOTAO_JOGAR, load_assets
 from sprites import Button
 
@@ -32,7 +30,7 @@ def init_screen(window):
                 state = QUIT
                 running = False
 
-            if botao.press() == True:
+            if botao.press():
                 state = GAME
                 running = False
 

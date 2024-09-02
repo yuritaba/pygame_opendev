@@ -1,3 +1,10 @@
+"""
+Módulo que define os mapas usados no jogo Castelo Assombrado.
+
+Contém duas matrizes que representam os layouts do jogo, onde os números indicam
+diferentes tipos de objetos ou terrenos.
+"""
+
 matriz = [[1,1,1,1,1,4,1,1,1,1,1,1,1,1,1,1],
           [1,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
           [2,0,1,1,1,1,1,0,1,1,1,1,1,0,1],

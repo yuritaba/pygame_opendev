@@ -1,3 +1,9 @@
+"""
+Configurações do jogo
+
+Aqui são definidas as configurações do jogo, como largura e altura da tela, cores, etc.
+"""
+
 from os import path
 
 # Pasta que contêm imagem 

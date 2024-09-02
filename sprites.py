@@ -1,15 +1,17 @@
-from curses import window
-import time
-import random
-from matplotlib import image
-import pygame
-from config import WIDTH, HEIGHT, PERSONAGEM_WIDTH, MONSTRO_WIDTH, PERSONAGEM_HEIGHT, MONSTRO_HEIGHT
-from assets import BOTAO_JOGAR, PERSONAGEM_PRINCIPAL, MONSTRO
-from mapa import matriz
+"""
+Módulo que define as classes para sprites no jogo Castelo Assombrado.
 
-#classe para fazer com que o botão seja clicavel e mude a tela
+Inclui classes para personagens, monstros, paredes, botões e outros elementos
+interativos do jogo.
+"""
+
+import random
+import pygame
+from config import WIDTH, HEIGHT
+
+# Classe para fazer com que o botão seja clicável e mude a tela
 class Button():
-    def __init__(self,x, y, image, scale):
+    def __init__(self, x, y, image, scale):
         width = 900
         height = 500
         self.image = pygame.transform.scale(image, (int(width * scale), int(height * scale)))
@@ -19,10 +21,10 @@ class Button():
 
     def draw(self, window):
         window.blit(self.image, (self.rect.x, self.rect.y))
-    
+
     def press(self):
         action = False
-        pos = pygame.mouse.get_pos() #pega a posição do mouse
+        pos = pygame.mouse.get_pos()  # Pega a posição do mouse
         if self.rect.collidepoint(pos):
             if pygame.mouse.get_pressed()[0] == 1 and self.cliked == False:
                 self.cliked = True
@@ -44,22 +46,22 @@ class Personagem(pygame.sprite.Sprite):
         self.paredes = paredes
         self.currentsprite = 0
 
-    def parar(self,image):
+    def parar(self, image):
         self.image = image
 
-    def direita(self,anim):
-        self.currentsprite+=1
-        if self.currentsprite>len(anim)-1:
-            self.currentsprite=0
-        self.image=anim[self.currentsprite]
-    
-    def esquerdo(self,anim):
-        self.currentsprite+=1
-        if self.currentsprite>len(anim)-1:
-            self.currentsprite=0
-        self.image=anim[self.currentsprite]
+    def direita(self, anim):
+        self.currentsprite += 1
+        if self.currentsprite > len(anim) - 1:
+            self.currentsprite = 0
+        self.image = anim[self.currentsprite]
 
-    def update(self,personagem2):
+    def esquerdo(self, anim):
+        self.currentsprite += 1
+        if self.currentsprite > len(anim) - 1:
+            self.currentsprite = 0
+        self.image = anim[self.currentsprite]
+
+    def update(self, personagem2):
         # Atualização da posição do personagem
         self.rect.x += self.speedx
         self.rect.y += self.speedy
@@ -73,8 +75,8 @@ class Personagem(pygame.sprite.Sprite):
             self.rect.bottom = HEIGHT
         if self.rect.top < 0:
             self.rect.top = 0
-        
-        #evita ele passar por cima da parede
+
+        # Evita ele passar por cima da parede
         collisions = pygame.sprite.spritecollide(self, self.paredes, False)
         for collision in collisions:
             # Estava indo para a direita
@@ -89,31 +91,29 @@ class Personagem(pygame.sprite.Sprite):
                 self.speedy = 0
 
 class Monstro(pygame.sprite.Sprite):
-    def __init__(self, img, paredes,x,y):
+    def __init__(self, img, paredes, x, y):
         # Construtor da classe mãe (Sprite).
         pygame.sprite.Sprite.__init__(self)
 
         self.image = img
         self.rect = self.image.get_rect()
-        #x = 565
-        #y = 40
+        # x = 565
+        # y = 40
         self.rect.topleft = (x, y)
-        #self.speedx = 1
-        #self.speedy = 0
+        # self.speedx = 1
+        # self.speedy = 0
         self.paredes = paredes
-        tempo=0
+        tempo = 0
 
-    def andar(self,lista_mov,tempo):
+    def andar(self, lista_mov, tempo):
+        # if tempo >= len(lista_mov):
+        #     tempo = 0
 
-        #if tempo>=len(lista_mov):
-        #    tempo=0
-        
-        self.speedx=lista_mov[tempo][0]
-        self.speedy=lista_mov[tempo][1]
+        self.speedx = lista_mov[tempo][0]
+        self.speedy = lista_mov[tempo][1]
 
         self.rect.x += self.speedx
         self.rect.y += self.speedy
-        
 
 class Wall(pygame.sprite.Sprite):
     def __init__(self, img, x, y):
@@ -135,11 +135,10 @@ class Blackout(pygame.sprite.Sprite):
         self.speedx = 0
         self.speedy = 0
 
-    def update(self,personagem2):
+    def update(self, personagem2):
         # Atualização da posição do personagem
-
-        self.rect.x = personagem2.rect.x-1188
-        self.rect.y = personagem2.rect.y-585
+        self.rect.x = personagem2.rect.x - 1188
+        self.rect.y = personagem2.rect.y - 585
 
 class Chave(pygame.sprite.Sprite):
     def __init__(self, image, lista):
@@ -152,11 +151,6 @@ class Chave(pygame.sprite.Sprite):
         lista.remove(posicao)
         self.rect = self.image.get_rect()
         self.rect.topleft = (self.x, self.y)
-    '''
-    def update(self,personagem2):
-        collisions = pygame.sprite.spritecollide(self, personagem2, True)
-        for collision in collisions:
-            if '''
 
 class Pontos(pygame.sprite.Sprite):
     def __init__(self, image, x, y):

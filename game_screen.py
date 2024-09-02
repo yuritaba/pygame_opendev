@@ -1,10 +1,16 @@
-from random import randint, random
-from numpy import False_
-import pygame
-from sympy import Q
-from mapa import matriz
+"""
+Módulo que define a tela de jogo principal do Castelo Assombrado.
+
+Este módulo contém a função `game_screen`, que gerencia a lógica e a renderização
+da tela principal do jogo, incluindo a movimentação do personagem, monstros,
+interação com itens e a verificação de condições de vitória ou derrota.
+"""
+
 from os import path
-from config import BLACK, FPS, GAME, QUIT, VITORIA, WHITE, WIDTH, HEIGHT, IMG_DIR, MORTE
+from random import randint
+import pygame
+from mapa import matriz
+from config import BLACK, FPS, QUIT, VITORIA, IMG_DIR, MORTE
 from assets import ALCAPAS, ANIMACAO_DIREITA, ANIMACAO_ESQUERDA, BLACKOUT, CHAO_CASTELO, MONSTRO, MONSTRO2,MONSTRO3,MONSTRO4,MONSTRO5, PARADO, RAIO, load_assets, CHAVE, PORTA
 from sprites import Alcapas, Blackout, Personagem, Monstro, Chave, Pontos, Porta, Raio
 from scene import make
@@ -65,7 +71,7 @@ def game_screen(window):
 
     all_sprites.add(porta)
     all_porta.add(porta)
-    
+
     img_alcapas = assets[ALCAPAS]
     alcapas1= Alcapas(200,40,img_alcapas)
     alcapas2= Alcapas(1040,440,img_alcapas)
@@ -112,7 +118,7 @@ def game_screen(window):
     all_monstros.add(monstro4)
     all_monstros.add(monstro5)
 
-    all_sprites.add(blackout) 
+    all_sprites.add(blackout)
     all_blackout.add(blackout)
 
 
@@ -155,55 +161,55 @@ def game_screen(window):
 
         hit3 = pygame.sprite.spritecollide(personagem_principal, all_alcapas1, False)
         if hit3 != []:
-            personagem_principal.rect.topleft = (1040,400)   
+            personagem_principal.rect.topleft = (1040,400)
 
         hit4 = pygame.sprite.spritecollide(personagem_principal, all_alcapas2, False)
         if hit4 != []:
-            personagem_principal.rect.topleft = (200,80)  
+            personagem_principal.rect.topleft = (200,80)
         
         for event in pygame.event.get():
             # Verifica se foi fechado.
-            if event.type == pygame.QUIT:
+            if event.type == pygame.QUIT:# pylint: disable=E1101
                 state = QUIT
                 running = False
-            if event.type == pygame.KEYDOWN:
+            if event.type == pygame.KEYDOWN:# pylint: disable=E1101
             # Dependendo da tecla, altera a velocidade.
                 
-                if event.key == pygame.K_RIGHT:
+                if event.key == pygame.K_RIGHT:# pylint: disable=E1101
                     personagem_principal.speedx += 1
                     dir_pressionado=True #animação de andar para direita
 
-                if event.key == pygame.K_UP :
+                if event.key == pygame.K_UP:# pylint: disable=E1101
                     personagem_principal.speedy -= 1
                     cima_pressionado=True #animação de andar para direita
 
-                if event.key == pygame.K_DOWN :
+                if event.key == pygame.K_DOWN:# pylint: disable=E1101
                     personagem_principal.speedy += 1
                     baixo_pressionado=True #animação de andar para direita
 
-                if event.key == pygame.K_LEFT :
+                if event.key == pygame.K_LEFT:# pylint: disable=E1101
                     personagem_principal.speedx -= 1
                     esq_pressionado=True
             
             # Verifica se soltou alguma tecla.
             if event.type == pygame.KEYUP:
 
-                if event.key == pygame.K_LEFT:
+                if event.key == pygame.K_LEFT:# pylint: disable=E1101
                     personagem_principal.speedx = 0
                     esq_pressionado=False
                     personagem_principal.parar(assets[PARADO])
 
-                if event.key == pygame.K_RIGHT:
+                if event.key == pygame.K_RIGHT:# pylint: disable=E1101
                     personagem_principal.speedx = 0
                     dir_pressionado=False
                     personagem_principal.parar(assets[PARADO])
 
-                if event.key == pygame.K_UP:
+                if event.key == pygame.K_UP:# pylint: disable=E1101
                     cima_pressionado=False
                     personagem_principal.parar(assets[PARADO])
                     personagem_principal.speedy = 0
 
-                if event.key == pygame.K_DOWN:
+                if event.key == pygame.K_DOWN:# pylint: disable=E1101
                     baixo_pressionado=False
                     personagem_principal.parar(assets[PARADO])
                     personagem_principal.speedy = 0
@@ -230,16 +236,16 @@ def game_screen(window):
         if tempo5>=len (lista_mov5):
             tempo5=0
         
-        if esq_pressionado==True and dir_pressionado==False:
+        if esq_pressionado and not dir_pressionado:
             personagem_principal.esquerdo(assets[ANIMACAO_ESQUERDA])
 
-        if dir_pressionado==True:
+        if dir_pressionado:
             personagem_principal.direita(assets[ANIMACAO_DIREITA])
 
-        if cima_pressionado==True and esq_pressionado==False and dir_pressionado==False:
+        if cima_pressionado and not esq_pressionado and not dir_pressionado:
             personagem_principal.direita(assets[ANIMACAO_DIREITA])
 
-        if baixo_pressionado==True and esq_pressionado==False and dir_pressionado==False:
+        if baixo_pressionado and not esq_pressionado and not dir_pressionado:
             personagem_principal.direita(assets[ANIMACAO_DIREITA])
 
         all_sprites.update(personagem_principal) #atualiza a posição do personagem e do monstro
@@ -277,6 +283,3 @@ def game_screen(window):
 
         pygame.display.update() # Mostra o novo frame para o jogador
     return state
-
-#window = pygame.display.set_mode((WIDTH, HEIGHT))
-#print(game_screen(window))

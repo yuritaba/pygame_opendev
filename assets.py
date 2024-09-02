@@ -1,6 +1,15 @@
-import pygame
+"""
+Módulo que gerencia os assets do jogo Castelo Assombrado.
+
+Este módulo contém a função `load_assets`, que carrega e organiza todos os 
+recursos gráficos e sonoros necessários para o funcionamento do jogo, como
+imagens, animações e sons. Os assets são carregados uma vez e armazenados em
+um dicionário para fácil acesso durante o jogo.
+"""
+
 import os
-from config import BOTAO_HEIGHT, BOTAO_WIDTH, HEIGHT, IMG_DIR, SND_DIR, PERSONAGEM_WIDTH, MONSTRO_WIDTH, PERSONAGEM_HEIGHT, MONSTRO_HEIGHT, VITORIA, WIDTH, BLACKOUT_WIDTH, BLACKOUT_HEIGHT, CHAVE_WIDTH, CHAVE_HEIGHT
+import pygame
+from config import BOTAO_HEIGHT, BOTAO_WIDTH, HEIGHT, IMG_DIR, SND_DIR, PERSONAGEM_WIDTH, MONSTRO_WIDTH, PERSONAGEM_HEIGHT, MONSTRO_HEIGHT, WIDTH, BLACKOUT_WIDTH, BLACKOUT_HEIGHT, CHAVE_WIDTH, CHAVE_HEIGHT
 
 SWOOSH_SOUND =  'swoosh_sound'
 BACKGROUND = 'background'
