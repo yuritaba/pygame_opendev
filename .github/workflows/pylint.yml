@@ -1,0 +1,37 @@
+name: Pylint Check
+
+on:
+  push:
+    branches: [main]  # Executa o workflow ao fazer push na branch 'main'
+  pull_request:
+    branches: [main]  # Executa o workflow ao abrir um pull request para a branch 'main'
+
+jobs:
+  pylint:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3  # Faz o checkout do repositório
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.x'  # Defina a versão do Python
+
+    - name: Install dependencies
+      run: |
+        pip install pylint
+        # Se houver dependências no seu projeto, instale-as aqui
+        # pip install -r requirements.txt
+
+    - name: Run Pylint
+      run: |
+        pylint **/*.py > pylint_report.txt  # Salva o output do Pylint em um arquivo
+        cat pylint_report.txt  # Exibe o output no log do workflow
+
+    - name: Upload Pylint Report
+      uses: actions/upload-artifact@v3
+      with:
+        name: pylint-report
+        path: pylint_report.txt  # Faz o upload do relatório de linting como um artefato
