@@ -8,4 +8,14 @@ nav:
       - Build Instructions: developer/build_instruction.md
       - Code Organization: developer/code_organization.md
       - Technologies Used: developer/technologies_used.md
+  - API Documentation:
+      - jogo: generated/jogo.html
+      - config: generated/config.html
+      - game_screen: generated/game_screen.html
+      - assets: generated/assets.html
+      - mapa: generated/mapa.html
+      - sprites: generated/sprites.html
+      - scene: generated/scene.html
+      - init_screen: generated/init_screen.html
+
 repo_url: https://github.com/yuritaba/pygame_opendev

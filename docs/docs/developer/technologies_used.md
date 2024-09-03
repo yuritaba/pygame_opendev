@@ -15,6 +15,10 @@ O jogo "Castelo Assombrado" utiliza as seguintes tecnologias e bibliotecas para 
 - **MkDocs**: Ferramenta de geração de sites estáticos usada para criar a documentação do projeto.
 - **MkDocs Material**: Tema moderno e responsivo para MkDocs, usado para estilizar a documentação.
 
+## Documentação de Código
+
+- **Pydoc**: Utilizado para gerar documentação automática do código diretamente a partir das docstrings nos módulos Python. O `pydoc` ajuda a fornecer uma visão geral rápida e funcional das funções, classes, e módulos do projeto, facilitando a compreensão do código para novos desenvolvedores.
+
 ## Controle de Versão
 
 - **Git**: Utilizado para controle de versão do código-fonte.

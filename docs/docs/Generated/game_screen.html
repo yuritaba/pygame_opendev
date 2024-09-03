@@ -1,0 +1,69 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: module game_screen</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>game_screen</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/Users/yuritabacof/Desktop/pygame_opendev/src/game_screen.py">/Users/yuritabacof/Desktop/pygame_opendev/src/game_screen.py</a></font></td></tr></table>
+    <p><tt>Módulo&nbsp;que&nbsp;define&nbsp;a&nbsp;tela&nbsp;de&nbsp;jogo&nbsp;principal&nbsp;do&nbsp;Castelo&nbsp;Assombrado.<br>
+&nbsp;<br>
+Este&nbsp;módulo&nbsp;contém&nbsp;a&nbsp;função&nbsp;`game_screen`,&nbsp;que&nbsp;gerencia&nbsp;a&nbsp;lógica&nbsp;e&nbsp;a&nbsp;renderização<br>
+da&nbsp;tela&nbsp;principal&nbsp;do&nbsp;jogo,&nbsp;incluindo&nbsp;a&nbsp;movimentação&nbsp;do&nbsp;personagem,&nbsp;monstros,<br>
+interação&nbsp;com&nbsp;itens&nbsp;e&nbsp;a&nbsp;verificação&nbsp;de&nbsp;condições&nbsp;de&nbsp;vitória&nbsp;ou&nbsp;derrota.</tt></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#aa55cc">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Modules</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#aa55cc"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="posixpath.html">posixpath</a><br>
+</td><td width="25%" valign=top><a href="pygame.html">pygame</a><br>
+</td><td width="25%" valign=top></td><td width="25%" valign=top></td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#eeaa77">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Functions</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#eeaa77"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt><a name="-game_screen"><strong>game_screen</strong></a>(window)</dt></dl>
+</td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#55aa55">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Data</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#55aa55"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><strong>ALCAPAS</strong> = 'alcapas'<br>
+<strong>ANIMACAO_DIREITA</strong> = 'animacao_direita'<br>
+<strong>ANIMACAO_ESQUERDA</strong> = 'animacao_esquerda'<br>
+<strong>BLACK</strong> = (0, 0, 0)<br>
+<strong>BLACKOUT</strong> = 'blackout'<br>
+<strong>CHAO_CASTELO</strong> = 'chao_castelo'<br>
+<strong>CHAVE</strong> = 'chave'<br>
+<strong>FPS</strong> = 45<br>
+<strong>IMG_DIR</strong> = '/Users/yuritabacof/Desktop/pygame_opendev/src/assets/Imagens'<br>
+<strong>MONSTRO</strong> = 'monstro'<br>
+<strong>MONSTRO2</strong> = 'monstro2'<br>
+<strong>MONSTRO3</strong> = 'monstro3'<br>
+<strong>MONSTRO4</strong> = 'monstro4'<br>
+<strong>MONSTRO5</strong> = 'monstro5'<br>
+<strong>MORTE</strong> = 4<br>
+<strong>PARADO</strong> = 'parado'<br>
+<strong>PORTA</strong> = 'porta'<br>
+<strong>QUIT</strong> = 2<br>
+<strong>RAIO</strong> = 'raio'<br>
+<strong>VITORIA</strong> = 3<br>
+<strong>lista_mov</strong> = [[1, 0], [1, 0], [1, 0], [1, 0], [1, 0], [1, 0], [1, 0], [1, 0], [1, 0], [1, 0], [1, 0], [1, 0], [1, 0], [1, 0], [1, 0], [1, 0], [1, 0], [1, 0], [1, 0], [1, 0], ...]<br>
+<strong>lista_mov2</strong> = [[-1, 0], [-1, 0], [-1, 0], [-1, 0], [-1, 0], [-1, 0], [-1, 0], [-1, 0], [-1, 0], [-1, 0], [-1, 0], [-1, 0], [-1, 0], [-1, 0], [-1, 0], [-1, 0], [-1, 0], [-1, 0], [-1, 0], [-1, 0], ...]<br>
+<strong>lista_mov3</strong> = [[0, 1], [0, 1], [0, 1], [0, 1], [0, 1], [0, 1], [0, 1], [0, 1], [0, 1], [0, 1], [0, 1], [0, 1], [0, 1], [0, 1], [0, 1], [0, 1], [0, 1], [0, 1], [0, 1], [0, 1], ...]<br>
+<strong>lista_mov4</strong> = [[-1, 0], [-1, 0], [-1, 0], [-1, 0], [-1, 0], [-1, 0], [-1, 0], [-1, 0], [-1, 0], [-1, 0], [-1, 0], [-1, 0], [-1, 0], [-1, 0], [-1, 0], [-1, 0], [-1, 0], [-1, 0], [-1, 0], [-1, 0], ...]<br>
+<strong>lista_mov5</strong> = [[-1, 0], [-1, 0], [-1, 0], [-1, 0], [-1, 0], [-1, 0], [-1, 0], [-1, 0], [-1, 0], [-1, 0], [-1, 0], [-1, 0], [-1, 0], [-1, 0], [-1, 0], [-1, 0], [-1, 0], [-1, 0], [-1, 0], [-1, 0], ...]<br>
+<strong>matriz</strong> = [[1, 1, 1, 1, 1, 4, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1], [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1], [2, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1], [2, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 1], [2, 1, 1, 1, 1, 0, 1, 0, 1, 1, 0, 1, 1, 0, 1], [2, 0, 0, 0, 0, 0, 3, 0, 0, 0, 0, 0, 0, 0, 2], [2, 1, 1, 1, 1, 0, 3, 0, 1, 3, 3, 1, 1, 0, 2], [1, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 2], [1, 0, 1, 1, 2, 0, 1, 0, 1, 0, 1, 0, 4, 0, 2], [1, 0, 1, 0, 2, 0, 1, 1, 1, 0, 1, 0, 2, 0, 1], [1, 0, 1, 0, 1, 0, 1, 0, 0, 0, 1, 0, 2, 0, 1], [1, 0, 1, 0, 0, 0, 1, 0, 3, 0, 1, 0, 1, 0, 1], [1, 0, 1, 0, 1, 0, 0, 0, 3, 0, 1, 1, 1, 0, 1], [5, 1, 1, 0, 1, 0, 1, 0, 1, 0, 0, 0, 0, 0, 5], [0, 0, 1, 0, 0, 0, 3, 0, 1, 1, 1, 1, 1, 0, 0], [0, 0, 1, 0, 1, 1, 1, 0, 0, 0, 0, 0, 1, 0, 0], [5, 0, 0, 0, 1, 0, 1, 1, 3, 3, 1, 0, 1, 0, 5], [1, 1, 1, 1, 1, 0, 1, 0, 0, 0, 1, 0, 1, 0, 1], [1, 0, 1, 0, 0, 0, 1, 0, 1, 0, 1, 0, 4, 0, 1], [1, 0, 1, 0, 1, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1], ...]<br>
+<strong>posicoes</strong> = [[205, 85], [1125, 405], [765, 365], [45, 525], [1125, 125], [685, 205], [445, 285], [485, 45], [445, 445], [165, 405], [965, 125], [45, 245]]<br>
+<strong>posicoes_clarao</strong> = [[920, 520], [320, 280], [800, 280], [440, 120]]</td></tr></table>
+</body></html>
