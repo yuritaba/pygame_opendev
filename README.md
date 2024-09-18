@@ -1,4 +1,4 @@
-# Projeto_Final_ArthurO_TomasM_YuriT - Castelo Assombrado
+# Projeto Final Desoft - Castelo Assombrado
 
 ## Descrição
 
@@ -6,7 +6,7 @@
 
 ## Instruções de Jogo
 
-- **Iniciar o Jogo**: Para abrir o jogo, execute o arquivo `jogo.py`.
+- **Iniciar o Jogo**: Para abrir o jogo, execute o arquivo `jogo.py`. Caso tenha dúvida de como fazer isso, veja o link da - [documentação completa](https://yuritaba.github.io/pygame_opendev/)  , na aba lateral Developer Guide -> Build Instructions.
 - **Começar a Jogar**: Clique com o mouse no botão "Jogar" exibido na tela inicial.
 - **Controles**: Use as setas do teclado para mover o personagem.
 - **Coletar Itens**: Passe por cima das chaves para coletá-las.

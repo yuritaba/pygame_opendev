@@ -1,0 +1,15 @@
+# Ignorar a pasta dist (executável gerado pelo PyInstaller)
+dist/
+
+# Ignorar a pasta build (arquivos temporários gerados pelo PyInstaller)
+build/
+
+# Ignorar caches do Python
+__pycache__/
+*.pyc
+*.pyo
+
+# Ignorar o arquivo .spec (se você não quiser versioná-lo)
+*.spec
+
+.DS_Store
