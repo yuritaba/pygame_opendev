@@ -9,7 +9,8 @@ um dicionário para fácil acesso durante o jogo.
 
 import os
 import pygame
-from config import BOTAO_HEIGHT, BOTAO_WIDTH, HEIGHT, IMG_DIR, SND_DIR, PERSONAGEM_WIDTH, MONSTRO_WIDTH, PERSONAGEM_HEIGHT, MONSTRO_HEIGHT, WIDTH, BLACKOUT_WIDTH, BLACKOUT_HEIGHT, CHAVE_WIDTH, CHAVE_HEIGHT
+from config import BOTAO_HEIGHT,BOTAO_WIDTH,HEIGHT,IMG_DIR,SND_DIR,PERSONAGEM_WIDTH,MONSTRO_WIDTH, \
+    PERSONAGEM_HEIGHT,MONSTRO_HEIGHT,WIDTH,BLACKOUT_WIDTH,BLACKOUT_HEIGHT,CHAVE_WIDTH,CHAVE_HEIGHT
 
 SWOOSH_SOUND =  'swoosh_sound'
 BACKGROUND = 'background'
@@ -40,13 +41,12 @@ BOTAO_JOGARN2 = 'jogar_novamente2'
 ALCAPAS='alcapas'
 RAIO='raio'
 
-def load_assets():
-    assets = {}
-
+def load_images(assets):
+    "Função que carrega as imagens e as retorna no dicionário assets"
     #imagens
     assets[BACKGROUND] = pygame.image.load(os.path.join(IMG_DIR, 'castelo.png')).convert()
     assets[BACKGROUND] = pygame.transform.scale(assets[BACKGROUND], (WIDTH, HEIGHT))
-    assets[BOTAO_JOGAR] = pygame.image.load(os.path.join(IMG_DIR, 'botao_jogar.png')).convert_alpha()
+    assets[BOTAO_JOGAR] = pygame.image.load(os.path.join(IMG_DIR,'botao_jogar.png')).convert_alpha()
     assets[BOTAO_JOGAR] = pygame.transform.scale(assets[BOTAO_JOGAR], (BOTAO_WIDTH, BOTAO_HEIGHT))
     assets[MONSTRO] = pygame.image.load(os.path.join(IMG_DIR, 'monstro.png')).convert_alpha()
     assets[MONSTRO] = pygame.transform.scale(assets[MONSTRO], (MONSTRO_WIDTH, MONSTRO_HEIGHT))
@@ -67,39 +67,47 @@ def load_assets():
     assets[VITORIA_BG] = pygame.image.load(os.path.join(IMG_DIR, 'Vitoria.png')).convert()
     assets[VITORIA_BG] = pygame.transform.scale(assets[VITORIA_BG], (WIDTH, HEIGHT))
     assets[PORTA] = pygame.image.load(os.path.join(IMG_DIR, 'porta.png')).convert_alpha()
-    assets[BOTAO_JOGARN] = pygame.image.load(os.path.join(IMG_DIR, 'botao_jogar_n.png')).convert_alpha()
+    assets[BOTAO_JOGARN] = pygame.image.load(os.path.join(IMG_DIR, \
+                                                           'botao_jogar_n.png')).convert_alpha()
     assets[BOTAO_JOGARN] = pygame.transform.scale(assets[BOTAO_JOGARN], (BOTAO_WIDTH, BOTAO_HEIGHT))
-    assets[BOTAO_JOGARN2] = pygame.image.load(os.path.join(IMG_DIR, 'botao_jogar_n2.png')).convert_alpha()
-    assets[BOTAO_JOGARN2] = pygame.transform.scale(assets[BOTAO_JOGARN2], (BOTAO_WIDTH, BOTAO_HEIGHT))
+    assets[BOTAO_JOGARN2] = pygame.image.load(os.path.join(IMG_DIR, \
+                                                            'botao_jogar_n2.png')).convert_alpha()
+    assets[BOTAO_JOGARN2] = pygame.transform.scale(assets[BOTAO_JOGARN2], \
+                                                    (BOTAO_WIDTH, BOTAO_HEIGHT))
     assets[ALCAPAS] = pygame.image.load(os.path.join(IMG_DIR, 'alcapas.png')).convert_alpha()
     assets[ALCAPAS] = pygame.transform.scale(assets[ALCAPAS], (40, 40))
     assets[RAIO] = pygame.image.load(os.path.join(IMG_DIR, 'raio.png')).convert_alpha()
     assets[RAIO] = pygame.transform.scale(assets[RAIO], (40, 40))
+    return assets
+
+def load_assets():
+    "Função que carrega os assets do jogo"
+    assets = {}
+    assets = load_images(assets)
 
     #Estados do personagem
 
     assets[PARADO] = pygame.image.load(os.path.join(IMG_DIR, 'parado.png')).convert_alpha()
     assets[PARADO] = pygame.transform.scale(assets[PARADO], (PERSONAGEM_WIDTH, PERSONAGEM_HEIGHT))
 
-    #animação de andar
+        #animação de andar
     animacao_direita = []
     for i in range(8):
         # Os arquivos de animação são numerados de 00 a 08
-        filename = os.path.join(IMG_DIR, '{}.png'.format(i))
+        filename = os.path.join(IMG_DIR, f'{i}.png')
         img = pygame.image.load(filename).convert_alpha()
         img = pygame.transform.scale(img, (PERSONAGEM_WIDTH, PERSONAGEM_HEIGHT))
         animacao_direita.append(img)
     assets[ANIMACAO_DIREITA] = animacao_direita
-    
+
     animacao_esquerda = []
     for i in range(8):
         # Os arquivos de animação são numerados de 00 a 08
-        filename = os.path.join(IMG_DIR, 'esquerda{}.png'.format(i))
+        filename = os.path.join(IMG_DIR, f'esquerda{i}.png')
         img = pygame.image.load(filename).convert_alpha()
         img = pygame.transform.scale(img, (PERSONAGEM_WIDTH, PERSONAGEM_HEIGHT))
         animacao_esquerda.append(img)
     assets[ANIMACAO_ESQUERDA] = animacao_esquerda
-
 
     #Paredes
     assets[PAREDE] = pygame.image.load(os.path.join(IMG_DIR, 'Parede.png')).convert()
@@ -119,5 +127,5 @@ def load_assets():
     pygame.mixer.music.load(os.path.join(SND_DIR, 'soundtrack.mp3'))
     pygame.mixer.music.set_volume(0.9)
     assets[SWOOSH_SOUND]= pygame.mixer.Sound(os.path.join(SND_DIR, 'swoosh_de_terror.wav'))
-    
+
     return assets
